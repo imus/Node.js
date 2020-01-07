@@ -1,0 +1,17 @@
+{
+  "name": "Connect",
+  "version": "1.0.0",
+  "description": "",
+  "main1": "1.what's_connect.js",
+  "main2": "2.flexible_middleware.js",
+  "main": "3.force_domain.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect": "^2.0.1"
+  }
+}
