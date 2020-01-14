@@ -4,13 +4,13 @@ const url = require("url");
 function lookupContainer(htserver, host, path) {
   for (let index = 0; index < htserver.basicServer.containers.length; index++) {
     const container = htserver.basicServer.containers[index];
-    const hostmatched = host.toLowerCase().match(container.host);
-    const pathmatched = path.match(container.path);
-    if (hostmatched !== null && pathmatched !== null) {
+    const hostmatches= host.toLowerCase().match(container.host);
+    const pathmatches = path.match(container.path);
+    if (hostmatches !== null && pathmatches !== null) {
       return {
         container,
-        host,
-        path
+        host: hostmatches,
+        path: pathmatches
       }
     }
   }
@@ -34,8 +34,8 @@ function dispatchToContainers(htserver, req, res) {
   let container = lookupContainer(htserver, req.basicServer.host, req.basicServer.urlParsed.pathname);
 
   if (container !== undefined) {
-    req.basicServer.hostMathes = container.host;
-    req.basicServer.pathMathes = container.path;
+    req.basicServer.hostMatches = container.host;
+    req.basicServer.pathMatches = container.path;
     req.basicServer.container = container.container;
     
     container.container.module.handle(req, res);
